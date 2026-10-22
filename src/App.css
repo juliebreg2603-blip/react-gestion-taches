@@ -1,0 +1,452 @@
+/* ============================================================
+   GESTIONNAIRE DE TÂCHES : style industriel / néo-brutaliste
+   ============================================================ */
+
+.app {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 32px 20px 72px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ---------- En-tête ---------- */
+.app-header {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.app-tag {
+  align-self: flex-start;
+  padding: 4px 10px;
+  background: var(--ink);
+  color: var(--yellow);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.app-header h1 {
+  font-size: clamp(30px, 6vw, 54px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.hazard {
+  height: 16px;
+  border: var(--border);
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--ink) 0 14px,
+    var(--yellow) 14px 28px
+  );
+}
+
+/* ---------- Boutons (base) ---------- */
+.app button {
+  padding: 10px 16px;
+  border: var(--border);
+  background: var(--yellow);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: var(--shadow-small);
+  transition: transform 0.08s, box-shadow 0.08s, background-color 0.12s;
+}
+
+.app button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--ink);
+}
+
+.app button:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0 var(--ink);
+}
+
+.app button:disabled {
+  background: var(--ink);
+  color: var(--yellow);
+  cursor: default;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-ghost {
+  background: var(--paper) !important;
+}
+
+.btn-danger {
+  background: var(--red) !important;
+  color: white !important;
+}
+
+/* ---------- Champs ---------- */
+.app input[type="text"],
+.app textarea,
+.app select {
+  width: 100%;
+  padding: 11px 12px;
+  border: var(--border);
+  background: white;
+  font-size: 15px;
+  border-radius: 0;
+  transition: box-shadow 0.1s, background-color 0.1s;
+}
+
+.app input[type="text"]:focus,
+.app textarea:focus,
+.app select:focus {
+  outline: none;
+  background: #fffbe0;
+  box-shadow: var(--shadow-small);
+}
+
+.app textarea {
+  min-height: 92px;
+  resize: vertical;
+}
+
+.app ::placeholder {
+  color: #77776f;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+/* ---------- Statistiques ---------- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.stat-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 22px 16px 14px;
+  background: var(--paper);
+  border: var(--border);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 10px;
+  background: var(--stat-color, var(--yellow));
+  border-bottom: var(--border);
+}
+
+.stat-card:nth-child(1) { --stat-color: var(--yellow); }
+.stat-card:nth-child(2) { --stat-color: var(--lime); }
+.stat-card:nth-child(3) { --stat-color: #6ee7ff; }
+.stat-card:nth-child(4) { --stat-color: var(--red); }
+
+.stat-number {
+  font-family: var(--font-mono);
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---------- Recherche et filtres ---------- */
+.toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px;
+  background: var(--paper);
+  border: var(--border);
+  box-shadow: var(--shadow);
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.filter-bar select {
+  width: auto;
+  min-width: 220px;
+  flex: 1;
+}
+
+/* ---------- Formulaire ---------- */
+.task-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  padding: 22px;
+  background: var(--paper);
+  border: var(--border);
+  box-shadow: var(--shadow);
+}
+
+.task-form h2 {
+  grid-column: 1 / -1;
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.task-form h2::before {
+  content: "+ ";
+  color: var(--orange);
+  font-family: var(--font-mono);
+}
+
+.field-wide,
+.task-form .alert,
+.task-form button[type="submit"] {
+  grid-column: 1 / -1;
+}
+
+.task-form button[type="submit"] {
+  padding: 14px;
+  font-size: 15px;
+}
+
+/* ---------- Messages ---------- */
+.alert {
+  padding: 12px 14px;
+  border: var(--border);
+  background: var(--red);
+  color: white;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: var(--shadow-small);
+}
+
+.alert::before {
+  content: "⚠  ";
+}
+
+.loading {
+  padding: 18px;
+  border: var(--border);
+  border-style: dashed;
+  background: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  animation: pulse 1.1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% { opacity: 0.45; }
+}
+
+/* ---------- Liste de tâches ---------- */
+.task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.task {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px 18px 16px;
+  background: var(--paper);
+  border: var(--border);
+  border-left-width: 14px;
+  box-shadow: var(--shadow);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.task:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--ink);
+}
+
+.priority-haute { border-left-color: var(--red); }
+.priority-moyenne { border-left-color: var(--yellow); }
+.priority-basse { border-left-color: var(--lime); }
+
+.task-main {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.task-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.task-title {
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.task-description {
+  margin-top: 6px;
+  color: var(--muted);
+}
+
+/* Case à cocher personnalisée */
+.task-check {
+  appearance: none;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  margin: 2px 0 0;
+  border: var(--border);
+  background: white;
+  cursor: pointer;
+  display: grid;
+  place-content: center;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.task-check::after {
+  content: "✓";
+  font-size: 20px;
+  font-weight: 700;
+  transform: scale(0);
+  transition: transform 0.12s;
+}
+
+.task-check:checked {
+  background: var(--lime);
+}
+
+.task-check:checked::after {
+  transform: scale(1);
+}
+
+/* Badges */
+.task-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.badge {
+  padding: 4px 10px;
+  border: 2px solid var(--ink);
+  background: white;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.priority-haute .badge-priority {
+  background: var(--red);
+  color: white;
+}
+
+.priority-moyenne .badge-priority {
+  background: var(--yellow);
+}
+
+.priority-basse .badge-priority {
+  background: var(--lime);
+}
+
+.badge-status {
+  background: var(--ink);
+  color: white;
+}
+
+.task.done .badge-status {
+  background: var(--lime);
+  color: var(--ink);
+}
+
+/* Actions */
+.task-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 2px dashed var(--ink);
+}
+
+.edit-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.edit-row input {
+  flex: 1;
+  min-width: 160px;
+}
+
+/* Tâche terminée */
+.task.done {
+  background: #e4e3dd;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.task.done .task-main,
+.task.done .task-meta {
+  opacity: 0.55;
+}
+
+/* ---------- Petits écrans ---------- */
+@media (max-width: 720px) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .task-form {
+    grid-template-columns: 1fr;
+  }
+
+  .task-form > * {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .app {
+    padding: 20px 12px 56px;
+  }
+
+  .stat-number {
+    font-size: 36px;
+  }
+
+  .filter-bar select {
+    min-width: 100%;
+  }
+}
