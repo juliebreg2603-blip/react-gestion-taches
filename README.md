@@ -1,16 +1,36 @@
-# React + Vite
+# Gestionnaire de tâches (React)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Application web de gestion de tâches développée avec React, réalisée dans le cadre d'un TP de formation. Les tâches sont enregistrées via une API REST simulée avec JSON Server.
 
-Currently, two official plugins are available:
+## Technologies
+- React 19, JavaScript (JSX)
+- Vite
+- JSON Server (API REST simulée à partir de `db.json`)
+- CSS
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Fonctionnalités
+- Affichage de la liste des tâches
+- Ajout, suppression et modification du titre d'une tâche
+- Marquer une tâche comme terminée ou à faire
+- Recherche par titre, description ou catégorie
+- Filtres par statut (toutes, actives, terminées) et par priorité
+- Statistiques sur les tâches
+- Message d'erreur si l'API n'est pas démarrée
 
-## React Compiler
+## Lancer le projet
+1. Cloner le dépôt puis installer les dépendances :
+   ```bash
+   npm install
+   ```
+2. Démarrer l'API (JSON Server) dans un premier terminal :
+   ```bash
+   npm run server
+   ```
+3. Démarrer l'application dans un second terminal :
+   ```bash
+   npm run dev
+   ```
+4. Ouvrir l'adresse affichée dans le terminal (généralement `http://localhost:5173`).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Auteure
+Julie Bregman
